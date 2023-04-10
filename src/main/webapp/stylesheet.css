@@ -1,0 +1,34 @@
+@charset "ISO-8859-1";
+
+table {
+	border: 2px solid;
+	border-collapse: collapse;
+	margin: 20px;
+	width: 600px;
+}
+
+td {
+	border: 1px solid;
+	padding: 8px;
+	
+}
+
+th {
+	padding: 10px;
+	text-align: left;
+	background-color: #003154;
+	color: #eee;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+	}
+	
+tr:hover {
+	background-color: #4c86b0;
+}
+
+.button {
+	padding: 5px 30px;
+	
+}
