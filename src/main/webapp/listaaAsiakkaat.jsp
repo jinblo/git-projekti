@@ -11,6 +11,11 @@
 	<table id="listaus">
 		<thead>
 			<tr>
+				<th>Hakusana:</th>
+				<th colspan="2"><input type="text" id="hakusana"></th>
+				<th><input type="button" value="Hae" id="hakunappi" onClick="haeAsiakkaat()"></th>
+			</tr>
+			<tr>
 				<th>Etunimi</th>
 				<th>Sukunimi</th>
 				<th>Puhelin</th>
