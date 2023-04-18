@@ -10,14 +10,13 @@ table {
 td {
 	border: 1px solid;
 	padding: 8px;
-	
 }
 
 th {
 	padding: 10px;
-	text-align: left;
 	background-color: #003154;
 	color: #eee;
+	text-align: left;
 }
 
 tr:nth-child(even) {
@@ -30,5 +29,19 @@ tr:hover {
 
 .button {
 	padding: 5px 30px;
-	
+}
+
+.oikealle {
+	text-align: right;
+}
+
+.poista {
+	color: red;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#linkki {
+	color: white;
+	text-decoration: none;
 }
