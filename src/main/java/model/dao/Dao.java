@@ -128,7 +128,7 @@ public class Dao {
 			stmtPrep.setString(3, asiakas.getPuhelin());
 			stmtPrep.setString(4, asiakas.getSposti());
 			stmtPrep.executeUpdate();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			paluuArvo = false;
 			e.printStackTrace();
 		} finally {
@@ -145,7 +145,7 @@ public class Dao {
 			stmtPrep = con.prepareStatement(sql);
 			stmtPrep.setInt(1, asiakas_id);
 			stmtPrep.executeUpdate();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 			paluuArvo = false;
 		} finally {
