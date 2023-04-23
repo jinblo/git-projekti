@@ -26,7 +26,7 @@ function printItems(respObjList) {
 		htmlStr = htmlStr+ "<td>" + item.sukunimi + "</td>";
 		htmlStr = htmlStr+ "<td>" + item.puhelin + "</td>";
 		htmlStr = htmlStr+ "<td>" + item.sposti + "</td>";
-		htmlStr = htmlStr+ "<td><span class='poista' onclick=varmistaPoisto("+item.asiakas_id+",'"+encodeURI(item.etunimi)+"','"+encodeURI(item.sukunimi)+"')>Poista</span></td>";
+		htmlStr = htmlStr+ "<td><span class='poista' onclick=varmistaPoisto("+item.asiakas_id+",'"+encodeURI(item.etunimi + " " + item.sukunimi)+"')>Poista</span></td>";
 		htmlStr = htmlStr+ "</tr>";
 	}
 	document.getElementById("tbody").innerHTML = htmlStr;
@@ -82,6 +82,7 @@ function tutkiTiedot() {
 function siivoa(teksti) {
 	teksti = teksti.replace(/</g, "");
 	teksti = teksti.replace(/>/g, "");
+	teksti = teksti.replace(/;/g, "");
 	teksti = teksti.replace(/'/g, "''");
 	return teksti;
 }
@@ -91,7 +92,7 @@ function lisaaTiedot() {
 	let url = "asiakkaat";
 	let requestOptions = {
 		method: "POST",
-		headers: { "Content-Type": "application/json" },
+		headers: { "Content-Type": "application/json; charset=UTF-8" },
 		body: formData
 	};
 	fetch(url, requestOptions)
@@ -108,13 +109,13 @@ function lisaaTiedot() {
 	.catch(errorText => console.error("Fetch failed: " + errorText));
 }
 
-function varmistaPoisto(asiakas_id, etunimi, sukunimi) {
-	if(confirm("Poista asiakas " + decodeURI(etunimi) + " " + decodeURI(sukunimi) + "?")){
-		poistaAsiakas(asiakas_id, encodeURI(etunimi), encodeURI(sukunimi));
+function varmistaPoisto(asiakas_id, nimi) {
+	if(confirm("Poista asiakas " + decodeURI(nimi) + "?")){
+		poistaAsiakas(asiakas_id, nimi);
 	}
 }
 
-function poistaAsiakas(asiakas_id, etunimi, sukunimi) {
+function poistaAsiakas(asiakas_id, nimi) {
 	let url = "asiakkaat?asiakas_id=" + asiakas_id;
 	let requestOptions = {
 		method: "DELETE"
@@ -126,7 +127,7 @@ function poistaAsiakas(asiakas_id, etunimi, sukunimi) {
 			alert("Asiakkaan poisto epäonnistui.");
 		} else if(responseObj.response == 1) {
 			document.getElementById("rivi_" + asiakas_id).style.backgroundColor="red";
-			alert("Asiakkaan " + decodeURI(etunimi) + " " + decodeURI(sukunimi) + " poisto onnistui.");
+			alert("Asiakkaan " + decodeURI(nimi) + " poisto onnistui.");
 			haeAsiakkaat();
 		}
 	})
