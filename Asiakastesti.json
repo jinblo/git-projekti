@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "88065906-9680-4b31-8414-ed8c9baec3c6",
+		"name": "Asiakastesti",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hae kaikki asiakkaat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Palautettava4/asiakkaat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Palautettava4",
+						"asiakkaat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hae asiakas, jonka asiakas_id=10",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Palautettava4/asiakkaat?asiakas_id=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Palautettava4",
+						"asiakkaat"
+					],
+					"query": [
+						{
+							"key": "asiakas_id",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lisää asiakas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"etunimi\":\"Bo\",\"sukunimi\":\"Banderas\",\"puhelin\":\"040-3475687\",\"sposti\":\"bo@minpin.com\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Palautettava4/asiakkaat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Palautettava4",
+						"asiakkaat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Muuta asiakas",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"asiakas_id\":11,\"etunimi\":\"Bror\",\"sukunimi\":\"Banderas\",\"puhelin\":\"040-3475687\",\"sposti\":\"bror@minpin.com\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/Palautettava4/asiakkaat",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Palautettava4",
+						"asiakkaat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Poista asiakas",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Palautettava4/asiakkaat?asiakas_id=11",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Palautettava4",
+						"asiakkaat"
+					],
+					"query": [
+						{
+							"key": "asiakas_id",
+							"value": "11"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Hae asiakkaat hakusanalla 'as'",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/Palautettava4/asiakkaat?hakusana=as",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"Palautettava4",
+						"asiakkaat"
+					],
+					"query": [
+						{
+							"key": "hakusana",
+							"value": "as"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
