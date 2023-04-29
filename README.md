@@ -8,3 +8,5 @@ Palautettava 4. Listaus ja haku. Git.
 Palautettava 5. Lisää ja poista.
 
 Palautettava 6. Muutos.
+
+Palautettava 7. Kirjautuminen.
