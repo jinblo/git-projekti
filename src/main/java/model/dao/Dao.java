@@ -14,12 +14,13 @@ public class Dao {
 	private ResultSet rs = null;
 	private PreparedStatement stmtPrep = null;
 	private String sql;
-	private String db = "Myynti2.sqlite";
+	private String db = "Myynti.sqlite";
 
 	private Connection yhdista() {
 		Connection con = null;
 		String path = System.getProperty("catalina.base");
-		path = path.substring(0, path.indexOf(".metadata")).replace("\\", "/");
+		// path = path.substring(0, path.indexOf(".metadata")).replace("\\", "/"); //Eclipsessä
+		path = path + "/webapps/"; //Tuotannossa. Laita tietokanta webapps-kansioon
 		String url = "jdbc:sqlite:" + path + db;
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -201,4 +202,28 @@ public class Dao {
 		}
 		return paluuArvo;
 	}
+	
+	public String findUser(String uid, String pwd) {
+		String nimi = null;
+		sql = "SELECT * FROM asiakkaat WHERE sposti=? AND salasana=?";
+		try {
+			con = yhdista();
+			if(con!=null) {
+				stmtPrep = con.prepareStatement(sql);
+				stmtPrep.setString(1, uid);
+				stmtPrep.setString(2, pwd);
+				rs = stmtPrep.executeQuery();
+				if(rs.isBeforeFirst()) {
+					rs.next();
+					nimi = rs.getString("etunimi") + " " + rs.getString("sukunimi");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sulje();
+		}
+		return nimi;
+	}
+	
 }
